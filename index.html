@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phòng Văn hóa - Xã hội phường Khánh Hội</title>
+  <meta name="description" content="Phòng Văn hóa - Xã hội phường Khánh Hội">
+  <style>
+    :root {
+      --blue: #075da8;
+      --blue-2: #08a9e6;
+      --cyan: #c9f5ff;
+      --ink: #092f5f;
+      --muted: #5b6d83;
+      --line: #bdeeff;
+      --panel: rgba(238, 252, 255, .88);
+      --white: #ffffff;
+      --soft: #f5fbff;
+      --shadow: 0 14px 36px rgba(7, 93, 168, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(213, 248, 255, .8), rgba(255, 255, 255, .96) 38%, rgba(231, 248, 255, .9)),
+        #f7fcff;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1280px, calc(100% - 28px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 900;
+      background: radial-gradient(circle at 34% 24%, #fff 0 15%, #ffd45c 16% 33%, #d71920 34% 60%, #075da8 61% 100%);
+      box-shadow: inset 0 0 0 3px #fff, 0 8px 18px rgba(7, 93, 168, .2);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(17px, 2.2vw, 26px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .clock {
+      flex: 0 0 auto;
+      display: grid;
+      gap: 2px;
+      min-width: 220px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f3fbff;
+      text-align: right;
+      font-weight: 800;
+    }
+    .clock span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    main { padding: 18px 0 48px; }
+    .entry-panel {
+      margin: 0 auto 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(110deg, rgba(217, 248, 255, .96), rgba(238, 252, 255, .84));
+      box-shadow: var(--shadow);
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .entry-card {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue-2);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: 0 10px 26px rgba(7, 93, 168, .08);
+    }
+    .entry-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 0;
+      color: var(--blue);
+      background: transparent;
+      font-weight: 900;
+      font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Segoe UI", sans-serif;
+      font-size: 34px;
+      line-height: 1;
+      overflow: visible;
+    }
+    .emoji-logo {
+      display: block;
+      line-height: 1;
+      transform: scale(1.25);
+      transform-origin: center;
+    }
+    .entry-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .entry-card strong { display: block; font-size: 16px; }
+    .entry-card span { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
+
+    section {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    .section-head h2 {
+      margin: 0;
+      padding-left: 14px;
+      border-left: 5px solid var(--blue-2);
+      font-size: clamp(20px, 2.6vw, 28px);
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .overview-grid,
+    .service-grid,
+    .utility-grid {
+      display: grid;
+      gap: 14px;
+    }
+    .overview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .utility-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      min-width: 0;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.28;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card .action {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 16px;
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .static-card {
+      justify-content: flex-start;
+    }
+    button.card {
+      width: 100%;
+      text-align: left;
+      cursor: default;
+    }
+    .card:focus-within,
+    .entry-card:focus {
+      outline: 3px solid rgba(8, 169, 230, .22);
+      outline-offset: 2px;
+    }
+
+    .department-list {
+      display: grid;
+      gap: 10px;
+    }
+    .dept-item {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .92);
+    }
+    .dept-toggle {
+      width: 100%;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      font-weight: 900;
+    }
+    .count {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border: 1px solid #8edfff;
+      border-radius: 999px;
+      background: #e7f9ff;
+      color: var(--ink);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .dept-body {
+      display: none;
+      padding: 0 16px 16px;
+    }
+    .dept-item.active .dept-body { display: block; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #d6eef8;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #edfaff;
+      color: #415870;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    tr:last-child td { border-bottom: 0; }
+
+    .empty-note {
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed #94dff8;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .72);
+      color: var(--muted);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 22px 0;
+      color: #fff;
+      background: #08345f;
+    }
+    footer .wrap {
+    footer .wrap {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       gap: 16px;
+       flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .topbar { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .clock { width: 100%; text-align: left; }
+      .entry-grid,
+      .overview-grid,
+      .service-grid,
+      .utility-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .section-head p { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 20px, 1280px); }
+      .brand { align-items: flex-start; }
+      .logo { width: 42px; height: 42px; }
+      .entry-grid,
+      .overview-grid,
+      .service-grid,
+      .utility-grid {
+        grid-template-columns: 1fr;
+      }
+      section { padding: 16px; border-radius: 16px; }
+      .dept-toggle { align-items: flex-start; flex-direction: column; }
+      table { min-width: 560px; }
+      .dept-body { overflow-x: auto; }
+    }
+  
+    .placeholder { cursor: not-allowed; }
+    .placeholder:hover { transform: none; }
+    .dept-body { overflow-x: auto; }
+.kp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+}
+
+
+/* ===== MOBILE FIX KHANH HOI ===== */
+@media (max-width: 640px){
+  .entry-grid,
+  .overview-grid,
+  .service-grid,
+  .utility-grid,
+  .kp-grid{
+      grid-template-columns:1fr !important;
+  }
+
+  .entry-card,
+  .card{
+      min-height:auto !important;
+      height:auto !important;
+  }
+
+  .entry-card strong,
+  .card h3{
+      font-size:32px !important;
+      line-height:1.25 !important;
+      word-break:normal !important;
+      overflow-wrap:break-word !important;
+  }
+
+  .entry-card span,
+  .card p{
+      font-size:18px !important;
+      line-height:1.6 !important;
+  }
+
+  .action{
+      white-space:nowrap !important;
+  }
+}
+
+</style>
+  <link rel="stylesheet" href="theme.css">
+  <script src="protect.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div class="brand">
+        <h1>Thông tin điện tử phòng Văn hóa - Xã hội, Phường Khánh Hội</h1>
+      </div>
+      <div class="clock" aria-live="polite">
+        <strong id="clock-time">--:--:--</strong>
+        <span id="clock-date">Đang cập nhật ngày</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="entry-panel" aria-label="Lối vào nhanh">
+      <div class="entry-grid">
+        <a class="entry-card" href="#citizen">
+          <span class="entry-icon"><img src="cong-dong.png" alt=""></span>
+          <span><strong>Người dân</strong><span>Dịch vụ công, Liên hệ công tác.</span></span>
+        </a>
+        <a class="entry-card" href="#utilities">
+          <span class="entry-icon"><img src="cai-dat.png" alt=""></span>
+          <span><strong>Các tiện ích</strong><span>Phản ánh, Bản đồ số, Fanpage, Zalo OA.</span></span>
+        </a>
+        <a class="entry-card" href="#neighborhood">
+          <span class="entry-icon"><img src="khu-pho.png" alt=""></span>
+          <span><strong>Khu phố số</strong><span>Tra cứu khu phố, Phong trào Bình dân học vụ số.</span></span>
+        </a>
+      </div>
+    </nav>
+
+    <section aria-labelledby="overview-title">
+      <div class="section-head">
+        <h2 id="overview-title">Tổng quan hệ thống</h2>
+      </div>
+      <div class="overview-grid">
+        <article class="card static-card">
+          <h3>1. Dành cho người dân</h3>
+          <p>Nhóm chức năng dịch vụ công trực tuyến, tra cứu thủ tục hành chính và theo dõi hồ sơ đã nộp.</p>
+        </article>
+        <article class="card static-card">
+          <h3>2. Liên hệ công tác</h3>
+          <p>Danh sách phòng ban, cán bộ phụ trách và số điện thoại liên hệ phục vụ công tác.</p>
+        </article>
+        <article class="card static-card">
+          <h3>3. Tiện ích số</h3>
+          <p>Các kênh phản ánh trực tuyến, bản đồ số, trợ lý ảo, fanpage và Zalo OA.</p>
+        </article>
+        <article class="card static-card">
+          <h3>4. Khu phố số</h3>
+          <p>Khu vực tra cứu thông tin khu phố, tổ dân phố và dữ liệu liên quan khi được cập nhật.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="citizen" aria-labelledby="citizen-title">
+      <div class="section-head">
+        <h2 id="citizen-title">Dành cho người dân</h2>
+      </div>
+      <div class="service-grid">
+        <a class="card" href="https://dichvucong.gov.vn/dvc-dich-vu-cong-truc-tuyen" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Nộp hồ sơ trực tuyến</h3>
+            <p>Thực hiện nộp hồ sơ trực tuyến trên Cổng Dịch vụ công Quốc gia.</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+        <a class="card" href="https://dichvucong.gov.vn/tra-cuu-thu-tuc/danh-sach" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Tra cứu thủ tục hành chính</h3>
+            <p>Tìm kiếm thủ tục hành chính theo lĩnh vực và cấp thực hiện.</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+        <a class="card" href="https://dichvucong.gov.vn/tra-cuu-ho-so" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Tra cứu hồ sơ đã nộp</h3>
+            <p>Theo dõi tình trạng xử lý hồ sơ đã gửi trên hệ thống.</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <h2 id="contact-title">Liên hệ phòng ban</h2>
+        <p>Menu thu gọn, bấm vào từng đơn vị để xem cán bộ phụ trách và số điện thoại.</p>
+      </div>
+      <div class="department-list" id="departmentList"></div>
+    </section>
+
+    <section id="utilities" aria-labelledby="utilities-title">
+      <div class="section-head">
+        <h2 id="utilities-title">Tiện ích số</h2>
+      </div>
+      <div class="utility-grid">
+        <a class="card" href="https://1022.tphcm.gov.vn/vi/" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Phản ánh trực tuyến</h3>
+            <p>Gửi phản ánh qua Cổng 1022 TP. HCM</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+        <a class="card" href="https://www.google.com/maps/d/edit?mid=16kmHcAwy5BQBlkqZf6RWl_fhW6IuCIA&usp=sharing" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Bản đồ số khu phố</h3>
+            <p>Tra cứu bản đồ số khu phố Khánh Hội.</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+        <a class="card" href="#" target="_blank" rel="noreferrer">
+          <span>
+            <h3>Trợ lý ảo Khánh Hội</h3>
+            <p>Liên kết sẽ được cập nhật sau.</p>
+          </span>
+          <span class="action">Mở liên kết</span>
+        </a>
+        <a class="card" href="social.html">
+          <span>
+            <h3>Fanpage phường Khánh Hội</h3>
+            <p>Trang Thông tin điện tử gồm Fanpage Phường Khánh Hội và mã QR Zalo OA.</p>
+          </span>
+          <span class="action">Mở trang</span>
+        </a>
+      </div>
+    </section>
+
+    
+<section id="neighborhood" aria-labelledby="neighborhood-title">
+  <div class="section-head">
+    <h2 id="neighborhood-title">Thông tin - Tiện ích Khu phố</h2>
+    </div>
+
+  <div class="kp-grid">
+
+    <a class="card" href="sotay-khupho.html">
+      <span>
+        <h3>Sổ tay Khu phố</h3>
+        <p>Tra cứu thông tin khu phố, ban điều hành, dữ liệu khu phố và các thông tin liên quan.</p>
+      </span>
+      <span class="action">Mở trang</span>
+    </a>
+
+    <a class="card" href="binhdanhocvuso.html">
+      <span>
+        <h3>Bình dân học vụ số</h3>
+        <p>Tài liệu, video hướng dẫn, kỹ năng số, AI, VNeID và dịch vụ công trực tuyến.</p>
+      </span>
+      <span class="action">Mở trang</span>
+    </a>
+
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+  <div class="wrap">
+    <div>
+      <strong>Phòng Văn hóa - Xã hội, Phường Khánh Hội</strong><br>
+      <strong>Lầu 2, Trụ sở Trung tâm Phục vụ hành chính công phường Khánh Hội</strong><br>
+      <span>531 Vĩnh Khánh, Khánh Hội, TP. Hồ Chí Minh</span>
+    </div>
+    <span>Lượt truy cập: <strong id="visitor-count">Đang tải...</strong></span>
+</footer>
+
+  <script>
+    const departments = [
+      {
+        name: "Văn phòng Hội đồng nhân dân & Ủy ban nhân dân",
+        people: [
+          ["Nguyễn Ngọc Bích", "Chánh Văn phòng", "Đang cập nhật"],
+          ["Lê Minh Tiến", "Phó Chánh Văn phòng", "Đang cập nhật"]
+          
+        ]
+      },
+      {
+        name: "Phòng Kinh tế Hạ tầng và Đô thị",
+        people: [
+          ["Nguyễn Chí Hải", "Trưởng phòng", "Đang cập nhật"],
+	  ["Lê Thị Gấm", "Phó trưởng phòng", "Đang cập nhật"]
+	 
+        ]
+      },
+      {
+        name: "Phòng Văn Hóa - Xã Hội",
+        people: [
+	  ["Nguyễn Anh Tuấn", "Trưởng phòng", "Đang cập nhật"],
+	  ["Tất Quốc Thắng", "Phó Trưởng phòng", "Đang cập nhật"]
+       
+        ]
+      },
+      {
+        name: "Trung tâm phục vụ Hành Chính Công",
+        people: [
+	  ["Huỳnh Thị Thảo Vi", "Phó Giám đốc", "Đang cập nhật"]
+        
+        ]
+      },
+      {
+        name: "Trung tâm Cung ứng Dịch Vụ Công",
+        people: [
+          ["Hồ Thị Nguyệt", "Giám đóc", "Đang cập nhật"]
+        ]
+      },
+      {
+        name: "Trạm y tế",
+        people: [
+          ["Võ Thị Ngọc Thúy", "Giám đốc", "Đang cập nhật"]
+         
+        ]
+      }
+    ];
+
+    const departmentList = document.querySelector("#departmentList");
+
+    departments.forEach((dept, index) => {
+      const item = document.createElement("article");
+      item.className = "dept-item";
+      item.innerHTML = `
+        <button class="dept-toggle" type="button" aria-expanded="false">
+          <span>${dept.name}</span>
+          <span class="count">${String(dept.people.length).padStart(2, "0")} liên hệ</span>
+        </button>
+        <div class="dept-body">
+          <table>
+            <thead>
+              <tr><th>Họ tên</th><th>Chức vụ / lĩnh vực</th><th>Số điện thoại</th></tr>
+            </thead>
+            <tbody>
+              ${dept.people.map(person => `<tr><td>${person[0]}</td><td>${person[1]}</td><td>${person[2]}</td></tr>`).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+      const button = item.querySelector("button");
+      button.addEventListener("click", () => {
+        const isActive = item.classList.toggle("active");
+        button.setAttribute("aria-expanded", String(isActive));
+      });
+      if (index === 0) {
+        item.classList.add("active");
+        button.setAttribute("aria-expanded", "true");
+      }
+      departmentList.appendChild(item);
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString("vi-VN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
+      const date = now.toLocaleDateString("vi-VN", {
+        weekday: "long",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+      document.querySelector("#clock-time").textContent = time;
+      document.querySelector("#clock-date").textContent = date;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+<script>
+const COUNTER_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxeCcwFC2VFRXNSZkEJoitcl8OFn6drNkrTwHE4dKseIfxgit8wNaDJ4qUUIUFylaU/exec";
+
+function visitorCounterCallback(data) {
+  const visitorCount = document.getElementById("visitor-count");
+  visitorCount.innerText = Number(data.displayCount || 0).toLocaleString("vi-VN");
+  visitorCount.title = "Lượt thực: " + Number(data.rawCount || 0).toLocaleString("vi-VN")
+    + " | Mốc khởi tạo: " + Number(data.base || 0).toLocaleString("vi-VN");
+}
+
+const counterScript = document.createElement("script");
+counterScript.src = COUNTER_WEB_APP_URL + "?action=counter&callback=visitorCounterCallback&v=" + Date.now();
+counterScript.onerror = function() {
+  document.getElementById("visitor-count").innerText = "Chưa cập nhật";
+};
+document.body.appendChild(counterScript);
+</script>
+</body>
+</html>

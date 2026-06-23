@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bình dân học vụ số - Phường Khánh Hội</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; font-family: "Segoe UI", Tahoma, Arial, sans-serif; background: #f4f9ff; color: #17324d; }
+    .container { width: min(1400px, 100%); margin: auto; }
+    .top-bar { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+    .home-btn, .btn { display: inline-block; padding: 10px 16px; border-radius: 8px; color: #fff; background: #0d5ea8; text-decoration: none; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .tab { padding: 12px 20px; border: 1px solid #cfe8ff; border-radius: 8px; color: #17324d; background: #fff; cursor: pointer; font: inherit; font-weight: 700; }
+    .tab.active { color: #fff; background: #0d5ea8; }
+    .panel { padding: 20px; border: 1px solid #cfe8ff; border-radius: 12px; background: #fff; }
+    .panel[hidden] { display: none; }
+    h2, h3 { color: #0d5ea8; }
+    .section { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e5eef8; }
+    .section:last-child { margin-bottom: 0; border-bottom: 0; }
+    .drive-frame { width: 100%; height: 780px; border: 0; border-radius: 10px; background: #f5f8fb; }
+    select { width: min(250px, 100%); padding: 10px; border: 1px solid #cfe8ff; border-radius: 8px; }
+    .note { padding: 30px; color: #666; text-align: center; }
+    @media (max-width: 640px) {
+      body { padding: 10px; }
+      .tab { width: 100%; }
+      .panel { padding: 14px; }
+      .drive-frame { height: 720px; }
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+  <script src="protect.js" defer></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1>Bình dân học vụ số</h1>
+      <a class="back" href="index.html">Quay lại trang chính</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" aria-label="Nội dung Bình dân học vụ số">
+      <button class="tab active" type="button" data-panel="guide">KỶ NĂNG SỐ CƠ BẢN</button>
+      <button class="tab" type="button" data-panel="docs">TÀI LIỆU THAM KHẢO</button>
+      <button class="tab" type="button" data-panel="video">HOẠT ĐỘNG TUYÊN TRUYỀN</button>
+      <button class="tab" type="button" data-panel="support">TỔ HỖ TRỢ CỘNG ĐỒNG</button>
+    </nav>
+
+    <section id="guide" class="panel">
+     
+      <div class="section">
+        <h3>1. BÌNH DÂN HỌC VỤ SỐ</h3>
+        <p>Nền tảng cung cấp các khóa học, tài liệu và nội dung giúp người dân nâng cao kỹ năng số, sử dụng nền tảng số và dịch vụ công trực tuyến. Nội dung có thể bổ sung phần giới thiệu dài hơn về cách đăng ký tài khoản, cách chọn khóa học phù hợp, các kỹ năng cơ bản cần nắm và lợi ích khi người dân thường xuyên cập nhật kiến thức số trong đời sống hằng ngày.</p>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.binhdanhocvuso.gov.vn/">Truy cập nền tảng</a>
+      </div>
+      <div class="section">
+        <h3>2. VNeID</h3>
+        <p>VNeID hỗ trợ sử dụng giấy tờ điện tử, xác thực danh tính và nhiều tiện ích số. Người dân có thể dùng ứng dụng để xuất trình thông tin cá nhân, theo dõi một số dịch vụ liên quan đến định danh điện tử, tiếp cận các tiện ích hành chính và giảm nhu cầu mang theo nhiều loại giấy tờ khi thực hiện giao dịch cần xác thực.</p>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://vneid.gov.vn">Tìm hiểu VNeID</a>
+      </div>
+      <div class="section">
+        <h3>3. CHAT NHANH VỚI AI</h3>
+        <p>Tra cứu thông tin, học tập và tìm hiểu kiến thức thông qua công nghệ trí tuệ nhân tạo.</p>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://chatgpt.com">Mở ChatGPT</a>
+      </div>
+    </section>
+
+    <section id="docs" class="panel" hidden>
+      <h2>TÀI LIỆU THAM KHẢO</h2>
+      <iframe id="docsFrame" class="drive-frame" title="Tài liệu tham khảo"></iframe>
+    </section>
+
+    <section id="video" class="panel" hidden>
+      <h2>HOẠT ĐỘNG TUYÊN TRUYỀN</h2>
+      <iframe id="videoFrame" class="drive-frame" title="Video tuyên truyền" allow="autoplay; fullscreen"></iframe>
+    </section>
+
+    <section id="support" class="panel" hidden>
+      <h2>TỔ HỖ TRỢ CỘNG ĐỒNG</h2>
+      <p>Tra cứu thông tin Tổ Công nghệ số cộng đồng theo khu phố.</p>
+      <select aria-label="Chọn khu phố">
+        <option>Khu phố 1</option><option>Khu phố 2</option><option>Khu phố 3</option><option>Khu phố 4</option>
+        <option>Khu phố 5</option><option>Khu phố 6</option><option>Khu phố 7</option><option>Khu phố 8</option>
+        <option>Khu phố 9</option><option>Khu phố 10</option><option>Khu phố 11</option><option>Khu phố 12</option>
+        <option>Khu phố 13</option><option>Khu phố 14</option><option>Khu phố 15</option><option>Khu phố 16</option>
+      </select>
+      <div class="note">Thông tin người phụ trách, số điện thoại và địa điểm hỗ trợ đang cập nhật.</div>
+    </section>
+  </main>
+
+  <script>
+    // Thay nội dung bên dưới bằng URL Web App sau khi triển khai Apps Script.
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxeCcwFC2VFRXNSZkEJoitcl8OFn6drNkrTwHE4dKseIfxgit8wNaDJ4qUUIUFylaU/exec";
+
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+    const docsFrame = document.querySelector("#docsFrame");
+    const videoFrame = document.querySelector("#videoFrame");
+
+    function ensureFrameLoaded(panelId) {
+      if (panelId === "docs" && !docsFrame.dataset.loaded) {
+        docsFrame.src = APPS_SCRIPT_URL + "?library=docs";
+        docsFrame.dataset.loaded = "true";
+      }
+
+      if (panelId === "video" && !videoFrame.dataset.loaded) {
+        videoFrame.src = APPS_SCRIPT_URL + "?library=video";
+        videoFrame.dataset.loaded = "true";
+      }
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener("click", function() {
+        const panelId = tab.dataset.panel;
+
+        panels.forEach(function(panel) {
+          panel.hidden = panel.id !== panelId;
+        });
+
+        tabs.forEach(function(item) {
+          item.classList.toggle("active", item === tab);
+        });
+
+        ensureFrameLoaded(panelId);
+      });
+    });
+
+  </script>
+</body>
+</html>
